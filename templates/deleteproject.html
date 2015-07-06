@@ -1,0 +1,15 @@
+<html>
+
+<body>
+<h1> Are you sure you want to delete {{project.title}}? </h1>
+
+<form action="{{ url_for('deleteProject', career_id = career_id, project_id=project.id)}}" method = 'post'>
+
+<input type='submit', value = 'Delete'>
+
+</form>
+
+<a href = "{{ url_for('allProjects', career_id = career_id)}}"> Cancel </a>
+</body>
+
+</html>

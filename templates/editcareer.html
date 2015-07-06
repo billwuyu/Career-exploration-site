@@ -1,0 +1,17 @@
+<html>
+
+	<body>
+
+		<h1>Edit the career: {{career.name}}</h1>
+
+		<form action = "{{url_for('editCareer', career_id = career.id)}}" method = 'post'>
+			<p>Name: </p> <input type='text' size = '100' name = 'name' placeholder = '{{career.name}}'>
+			<p>Description: </p> <input type='text' size = '150' name = 'description' placeholder = '{{career.description}}'>
+			<input type = 'submit' value = 'Edit'>
+
+		</form>
+
+
+	<body>
+
+<html>

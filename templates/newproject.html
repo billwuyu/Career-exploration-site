@@ -1,0 +1,38 @@
+<html>
+
+	<body>
+
+		<h1>New Project for the career: {{career.name}}</h1>
+
+		<div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+	      
+	    	{% if messages %}
+	          
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	        {% endif %}
+	    
+	    	{% endwith %}
+
+		</div>
+ 
+		<form action = "{{url_for('newProject', career_id = career.id)}}" method = 'POST'>
+			<p>Title: <input type='text' size = '40' name = 'title'> </p>
+			<p>Description:</p>
+			<TEXTAREA NAME="description" ROWS="4" COLS="40">Please enter the instructions of the project.
+
+			</TEXTAREA>
+			<br><br>
+			<INPUT TYPE="submit">
+			<INPUT TYPE="reset">
+
+		</form>
+
+		
+	</body>
+
+</html>

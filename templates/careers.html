@@ -1,0 +1,59 @@
+<html>
+	<body>
+	<div class = 'pane'>
+
+		<div class = 'header'>
+			<h1>All Careers</h1>
+		</div>
+
+	<a href = '{{url_for('newCareer')}}'>Create New Career</a>
+
+
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+	      
+	    	{% if messages %}
+	          
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	        {% endif %}
+	    
+	    {% endwith %}
+
+	</div>
+
+
+	{% for i in careers %}
+    	
+		<div class = 'name'>
+			<p>{{i.name}}</p>
+		</div>
+
+	
+		<div class = 'description'>
+			<p>{{i.description}}</p>
+		</div>
+
+		<div class = 'projects'>
+			<a href="{{url_for('allProjects', career_id = i.id)}}">Projects</a>
+		</div>
+
+	
+	
+		<div class = "editdelete">
+
+			<a href='{{url_for('editCareer',career_id = i.id)}}' >Edit</a>
+			<a href='{{url_for('deleteCareer', career_id = i.id)}}'>Delete</a>
+		</div>
+
+
+	{% endfor %}
+
+		</div>
+
+	</body>
+
+</html>

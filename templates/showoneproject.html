@@ -1,0 +1,22 @@
+<html>
+<body>
+
+	<span class = 'name'><h1>{{project.title}}</h1></span>
+
+
+	
+	
+	<div class = 'description'>
+		<p>{{project.description}}</p>
+	</div>
+
+	
+	
+	<div class = "editdeletepane">
+
+	<a href="{{url_for('editProject', career_id = career_id, project_id = project.id)}}">Edit</a>
+	<a href="{{url_for('deleteProject', career_id = career_id, project_id = project.id)}}">Delete</a>
+	</div>
+
+</body>
+</html>

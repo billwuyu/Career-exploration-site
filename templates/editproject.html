@@ -1,0 +1,25 @@
+<html>
+
+	<body>
+
+		<h1>Edit project: {{project.title}}</h1>
+
+		<form action = "{{url_for('editProject', career_id = career_id, project_id = project.id)}}" method = 'POST'>
+			<p>Title: <input type='text' size = '40' name = 'title' placeholder = "{{project.title}}"> </p>
+			
+			<p>Description:</p>
+			
+			<TEXTAREA NAME="description" ROWS="4" COLS="40">
+				{{project.description}}
+			</TEXTAREA>
+			<br><br>
+			<INPUT TYPE="submit" value = 'Edit'>
+			<INPUT TYPE="reset">
+
+		</form>
+		</form>
+
+		
+	</body>
+
+</html>

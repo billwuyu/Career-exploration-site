@@ -1,0 +1,28 @@
+<html>
+	<body>
+	
+	<h1>Upcoming Events!!</h1>
+
+
+	{% for i in events %}
+    	
+		<div class = 'name'>
+			<h3>{{i['name']}}</h3>
+		</div>
+
+		<br>
+	
+		<div class = 'description'>
+			{{i['description']}}
+		</div>
+
+		<br><br>
+
+
+	{% endfor %}
+
+
+
+	</body>
+
+</html>

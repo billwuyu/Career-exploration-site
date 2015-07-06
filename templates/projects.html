@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+	
+	<body>
+
+		<h1>{{career.name}}: Projects</h1>
+
+	<a href = "{{url_for('newProject', career_id = career.id) }}">Create New Project!</a> <br><br>
+
+
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      
+    {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    
+    {% endwith %}
+
+</div>
+
+
+	{% for i in projects %}
+
+
+	<a href="{{url_for('showProject',career_id = career.id, project_id=i.id)}}"> {{i.title}} </a> <br>
+
+
+	{% endfor %}
+
+
+	<br>
+
+	<a href = "{{url_for('allCareers') }}">Back to Careers page!</a>
+
+
+	</body>
+
+</html>
