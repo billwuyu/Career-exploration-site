@@ -1,2 +1,2 @@
-web: gunicorn rocket:app -b 0.0.0.0:8000 -D
+web: gunicorn final_project:app --log-file -
 init: python database_setup.py
