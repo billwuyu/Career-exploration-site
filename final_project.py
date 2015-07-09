@@ -7,18 +7,18 @@ from database_setup import Career, Base, Project
 
 import urllib2
 import json
+import os
 
+if os.environ.get('DATABASE_URL') is None:
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///exduu.db'
+else:
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 #connect to database!!
-engine = create_engine('sqlite:///exduu.db')
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-
-#careers = [{'name':'engineer', 'id': 1, 'description':'Tony Stark'},
-		   #{'name':'psychiatrist', 'id': 2, 'description':'Hannibal'},
-		   #{'name':'finance and investing', 'id':3, 'description':'Charlie Munger'}]
-
 
 @app.route('/')
 def homePage():
@@ -124,7 +124,7 @@ def editProject(career_id, project_id):
 
 @app.route('/careers/<int:career_id>/projects/<int:project_id>/delete/', methods = ['GET', 'POST'])
 def deleteProject(career_id, project_id):
-	project = session.query(Project).filter_by(id = project_id).one()
+	project = session.query(Project).filter_by(id = project_id).one()	
 	if project is None:
 		return "No such career!"
 
@@ -155,4 +155,4 @@ def upcomingEvents():
 if __name__ == "__main__":
 	app.secret_key = 'super_secret_key'
 	app.debug = True
-	app.run(host = '0.0.0.0', port = 5000)
+	#app.run(host = '0.0.0.0', port = 5000)

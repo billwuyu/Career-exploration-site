@@ -23,6 +23,11 @@ class Project(Base):
 	career_id = Column(Integer, ForeignKey('career.id'))
 	career = relationship(Career)
 
-engine = create_engine('sqlite:///exduu.db') #database type and name
+if os.environ.get('DATABASE_URL') is None:
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///exduu.db'
+else:
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
+engine = create_engine(SQLALCHEMY_DATABASE_URI) #database type and name
 Base.metadata.create_all(engine)
 
