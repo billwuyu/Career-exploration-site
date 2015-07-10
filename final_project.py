@@ -23,6 +23,8 @@ app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 
+app.secret_key = 'yet_another_secret_key'
+
 #connect to database!!
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 Base.metadata.bind = engine
@@ -162,7 +164,7 @@ def upcomingEvents():
 
 
 if __name__ == "__main__":
-	app.secret_key = 'yet_another_secret_key'
+	
 	#app.debug = True
 	#app.run(host = '0.0.0.0', port = 5000)
 	app.run()
