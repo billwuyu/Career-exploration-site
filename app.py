@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect, flash
+app = Flask(__name__)
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -8,20 +9,10 @@ import urllib2
 import json
 import os
 
-import sys
-import logging
-
-
 if os.environ.get('DATABASE_URL') is None:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///exduu.db'
 else:
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-
-
-app = Flask(__name__)
-
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
 
 #connect to database!!
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
@@ -162,7 +153,6 @@ def upcomingEvents():
 
 
 if __name__ == "__main__":
-	app.secret_key = 'super_secret_key'
-	#app.debug = True
+	app.config['SECRET_KEY'] = 'Yet_another_key'
+	app.debug = True
 	#app.run(host = '0.0.0.0', port = 5000)
-	app.run()
